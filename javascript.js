@@ -7,12 +7,10 @@ $(document).ready(function () {
     
         
         var apikey = '&api-key=uobpTwgmKD1c2H2c4iMrUuBJG6zbPDUv';
-        var query = 'SpaceX' //$('#articleBox').val().trim();
-       // var filter = //$('#filter').val()
+        var query = $('#articleBox').val().trim();
+      
         var endpoint = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' +
-            query //+
-           // '&fq='
-           // + filter
+            query 
             + "&"
             + apikey
         var topArticles = $('#topArticles')
