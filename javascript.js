@@ -14,7 +14,7 @@ $(document).ready(function () {
         //TODO: Grab other search filters to the query, like by date or author
         var query = {
                           'api-key': 'uobpTwgmKD1c2H2c4iMrUuBJG6zbPDUv',
-                                'a': searchFor
+                                'q': searchFor
                     }
 
         var topArticles = $('#topArticles')
