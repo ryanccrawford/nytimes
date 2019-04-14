@@ -18,7 +18,7 @@ $(document).ready(function () {
                     }
 
         var topArticles = $('#topArticles')
-        
+
         $.ajax({
             url: endpoint,
             method: "GET",
@@ -32,24 +32,25 @@ $(document).ready(function () {
 
             //loop through the objects array
             for (let i = 0; i < articlesLength; i++){
+                //get articles 
                 var articles = retrieved.docs[i],
 
-                    headline = articles.headline.main,
-                    snippit = articles.snippit ? articles.snippit:'', // checks if snippit exist
-                    date = articles.pub_date,
-                    link = articles.web_url
+                    headline = articles.headline.main, // Headline
+                    snippit = typeof(articles.snippit) != 'undefined' ? articles.snippit:'', // checks if snippit exist
+                    date = articles.pub_date, //TODO: need to fix this here or the front end
+                    link = articles.web_url 
                 
-                
-                var headlineH1 = $('<h1>').text(headline).addClass('')
-                var dateP = $('<p>').text(date).addClass('')
-                var snippitP = $('<p>').text(snippit).addClass('')
-                var linkA = $('<a>').attr('href', link)
-                $(linkA).append(headlineH1)
-                var articleBlock = $('<div>').addClass('articleBlock')
+                var linkA = $('<a>').attr('href', link) //create a link with href set to the article URL
+                var headlineH2 = $('<h2>').text(headline).addClass('') // creates h2 element with headline
+                var dateP = $('<p>').text(date).addClass('') // Date is in pure database format with time. Needs to parsed and cleaned up
+                var snippitP = $('<p>').text(snippit).addClass('') // the breif snippit from 
+               
+                $(linkA).append(headlineH2)//append h2 to link so that link surrounds the h2 tag
+                var articleBlock = $('<div>').addClass('articleBlock') // creates the block to hold the articles
 
-                $(articleBlock).append(linkA).append(dateP).append(snippitP)
+                $(articleBlock).append(linkA).append(dateP).append(snippitP) // append snippit
 
-                topArticles.prepend(articleBlock)
+                topArticles.prepend(articleBlock)// prepend to main display block
             }
             
 
