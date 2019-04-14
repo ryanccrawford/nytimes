@@ -22,7 +22,7 @@ $(document).ready(function () {
         $.ajax({
             url: endpoint,
             method: "GET",
-            data: data
+            data: query
         }).then(function (response) {
            
 
